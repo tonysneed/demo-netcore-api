@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  demo-netcore-api:
+    image: demo-netcore-api
+    build: .
+    ports:
+      - 3000:80
