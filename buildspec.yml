@@ -3,16 +3,16 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo Logging in to Docker Hub...
-      - docker login -u tonysneed -p Kerrigan$       
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region us-east-2)
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the Docker image...
-      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
-      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $IMAGE_REPO_NAME:$IMAGE_TAG
+      - echo Building the Docker image...          
+      - docker build -t architecture/demo-netcore-api .
+      - docker tag architecture/demo-netcore-api:latest 229130418844.dkr.ecr.us-east-2.amazonaws.com/architecture/demo-netcore-api:latest      
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push $IMAGE_REPO_NAME:$IMAGE_TAG
+      - docker push 229130418844.dkr.ecr.us-east-2.amazonaws.com/architecture/demo-netcore-api:latest
