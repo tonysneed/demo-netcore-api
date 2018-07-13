@@ -10,9 +10,9 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t architecture/demo-netcore-api .
-      - docker tag architecture/demo-netcore-api:latest 229130418844.dkr.ecr.us-east-2.amazonaws.com/architecture/demo-netcore-api:latest      
+      - docker tag architecture/demo-netcore-api:latest 229130418844.dkr.ecr.eu-west-1.amazonaws.com/architecture/demo-netcore-api:latest      
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 229130418844.dkr.ecr.us-east-2.amazonaws.com/architecture/demo-netcore-api:latest
+      - docker push 229130418844.dkr.ecr.eu-west-1.amazonaws.com/architecture/demo-netcore-api:latest
